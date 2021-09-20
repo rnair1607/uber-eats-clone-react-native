@@ -40,6 +40,7 @@ const Categories = () => {
         backgroundColor: "white",
         paddingVertical: 10,
         paddingHorizontal: 10,
+        elevation: 5,
       }}
     >
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
