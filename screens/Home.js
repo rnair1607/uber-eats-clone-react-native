@@ -18,7 +18,7 @@ import SearchBar from "../components/home/SearchBar";
 const YELP_API_KEY =
   "9-VKcmR3IZ25_bWz7AtC6HY4T4VP0Ov2uefcaaIOp5qO9AzLNRFjc2DelkRaT66qdmjL1-MFvp_ZPDcJqIbHXLEWD5WIhAQn3MgRC2Vbez8-v5PfBA_GGP0NygH6XXYx";
 
-function Home() {
+function Home({ navigation }) {
   const [restaurantData, setRestaurantData] = useState(localRestaurants);
   const [city, setCity] = useState("San Francisco");
   const [activeTab, setActiveTab] = useState("Delivery");
@@ -38,14 +38,14 @@ function Home() {
       if (response.ok) {
         res = await response.json();
       }
-      console.log("res data", res);
+      // console.log("res data", res);
       setRestaurantData(
         res.businesses.filter((business) =>
           business.transactions.includes(activeTab.toLowerCase())
         )
       );
     } catch (error) {
-      console.log("error", error);
+      // console.log("error", error);
     }
   };
 
@@ -61,7 +61,10 @@ function Home() {
       </View>
       <Categories />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <RestaurantItem restaurantData={restaurantData} />
+        <RestaurantItem
+          restaurantData={restaurantData}
+          navigation={navigation}
+        />
       </ScrollView>
       <Divider width={1} />
       <BottomTabs />

@@ -1,7 +1,15 @@
 import React from "react";
+import RootNavigation from "./navigation";
+import { Provider } from "react-redux";
+import configureStore from "./store/store";
 
-import Home from "./screens/Home";
+const store = configureStore();
 
 export default function App() {
-  return <Home />;
+  return (
+    // <Home />
+    <Provider store={store}>
+      <RootNavigation />
+    </Provider>
+  );
 }
